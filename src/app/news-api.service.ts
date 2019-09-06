@@ -6,9 +6,19 @@ import { HttpClient  } from '@angular/common/http';
 })
 export class NewsApiService {
 
-  api_key = '[read from text file]';
+  api_key = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    // this.api_key = this.getApiKey();
+    // console.log("apikey", this.getApiKey());
+  }
+  // getApiKey(){
+  //   return this.http.get('assets/newsApiKey.txt', {responseType: 'text'})
+  //   .subscribe(
+  //       data => {return data}
+  //   );
+  // }
+  
   initSources(){
      return this.http.get('https://newsapi.org/v2/sources?language=en&apiKey='+this.api_key);
   }
